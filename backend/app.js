@@ -80,6 +80,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'public','index.html'));
 });
 
+module.exports = app;
+
 // Start server
 // app.listen(PORT, () => {
 //     console.log(`Server running on http://localhost:${PORT}`);
