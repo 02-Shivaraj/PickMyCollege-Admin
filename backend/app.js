@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, '..','frontend'))); // Serve static files (HTML, CSS, JS)
 
 // MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/admin';
+const MONGODB_URI = process.env.MONGODB_URI ;
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
@@ -47,7 +47,7 @@ app.get('/api', async (req, res) => {
         console.log('📊 Fetching statistics from database...');
         
         // Find the statistics document
-        const stats = await Stats.findOne();
+        const stats = await Stats.find();
 
         console.log(stats)
         
@@ -59,12 +59,11 @@ app.get('/api', async (req, res) => {
             });
         }
 
-        console.log(`📈 Stats fetched - Users: ${stats.user_submissions}, Colleges: ${stats.colleges_recommended}`);
-        
-        res.json({
-            userCount: stats.user_submissions,
-            collegeCount: stats.colleges_recommended
-        });
+        // console.log(`📈 Stats fetched - Users: ${stats.user_submissions}, Colleges: ${stats.colleges_recommended}`);
+       const { user_submissions: a, colleges_recommended: b, count: c } = stats[0];
+        const { user_submissions: d, colleges_recommended: e, count: f } = stats[1];
+        console.log(c,f);
+        res.json({st:stats});
 
     } catch (error) {
         console.error('❌ Error fetching statistics:', error);
@@ -82,7 +81,5 @@ app.get('/', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-    console.log(`📊 Admin dashboard available at http://localhost:${PORT}`);
-    console.log(`📡 API endpoint: http://localhost:${PORT}/api`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
