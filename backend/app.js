@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.static(path.join(__dirname, '..','frontend'))); // Serve static files (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname,'frontend'))); // Serve static files (HTML, CSS, JS)
 
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI ;
@@ -76,7 +76,7 @@ app.get('/api', async (req, res) => {
 
 // Serve the main HTML file (admin dashboard)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..','frontend', 'index.html'));
+    res.sendFile(path.join(__dirname,'frontend', 'index.html'));
 });
 
 // Start server
