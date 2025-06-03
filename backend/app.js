@@ -83,6 +83,6 @@ app.get('/', (req, res) => {
 module.exports = app;
 
 // Start server
-// app.listen(PORT, () => {
-//     console.log(`Server running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
