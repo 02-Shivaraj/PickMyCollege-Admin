@@ -1,5 +1,5 @@
 async function fetchStats(){
-    const response = await fetch('/api'); 
+    const response = await fetch('/api/'); 
     const data = await response.json();
 
       document.getElementById('userCount').textContent = data.st[0].count.toLocaleString();
