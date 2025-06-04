@@ -1,12 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const cors = require('cors')
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors())
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
@@ -83,8 +81,8 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server running on http://localhost:${PORT}`);
+// });
 
-// module.exports = app;
+module.exports = app;
