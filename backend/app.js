@@ -1,11 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors({
+  origin: 'https://your-frontend-domain.vercel.app'
+}));
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 // Serve static files (HTML, CSS, JS)
@@ -43,7 +47,7 @@ const statsSchema = new mongoose.Schema({
 const Stats = mongoose.model('counters', statsSchema,'counters');
 
 // API endpoint to get statistics (only GET operation)
-app.get('/api', async (req, res) => {
+app.get('/api/', async (req, res) => {
     try {
         console.log('📊 Fetching statistics from database...');
         
