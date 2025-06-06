@@ -54,7 +54,7 @@ app.get('/api/', async (req, res) => {
         // Find the statistics document
         const stats = await Stats.find();
 
-        console.log(stats)
+        // console.log(stats)
         
         if (!stats) {
             console.log('⚠️ No statistics found in database');
@@ -67,7 +67,6 @@ app.get('/api/', async (req, res) => {
         // console.log(`📈 Stats fetched - Users: ${stats.user_submissions}, Colleges: ${stats.colleges_recommended}`);
        const { user_submissions: a, colleges_recommended: b, count: c } = stats[0];
         const { user_submissions: d, colleges_recommended: e, count: f } = stats[1];
-        console.log(c,f);
         res.json({st:stats});
 
     } catch (error) {
